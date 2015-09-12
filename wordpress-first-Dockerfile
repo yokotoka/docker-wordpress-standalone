@@ -1,0 +1,19 @@
+FROM ubuntu:14.04
+MAINTAINER Eugene Ware <eugene@noblesamurai.com>
+
+
+
+
+
+# Wordpress Initialization and Startup Script
+ADD ./start.sh /start.sh
+RUN chmod 755 /start.sh
+
+# private expose
+EXPOSE 3306
+EXPOSE 80
+
+# volume for mysql database and wordpress install
+VOLUME ["/var/lib/mysql", "/usr/share/nginx/www"]
+
+CMD ["/bin/bash", "/start.sh"]
